@@ -26,57 +26,82 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: PageStatefull(),
+      home: HomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class PageStateless extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: new Container(
-        color: Colors.blueAccent,
-        child: new Container(
-          color: Colors.lightGreen,
-          margin: const EdgeInsets.all(50.0),
-        ),
-      ),
-    );
-  }
-}
-
-class PageStatefull extends StatefulWidget {
-  @override
-  _PageStatefullState createState() => _PageStatefullState();
-}
-
-class _PageStatefullState extends State<PageStatefull> {
-  String text = '';
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    text = 'Init State';
-  }
-
-  void gantiText() {
-    setState(() {
-      text = 'Change State Value';
-    });
+class HomePage extends StatelessWidget {
+  void buttonPressed(BuildContext context, page) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => page));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: new Center(
-        child: new MaterialButton(
-            color: Colors.blueAccent,
-            textColor: Colors.white,
-            child: new Text(text),
-            onPressed: gantiText),
+        child: Column(
+          children: <Widget>[
+            new MaterialButton(
+              onPressed: () {
+                buttonPressed(context, PagePertama());
+              },
+              color: Colors.lightBlue[200],
+              textColor: Colors.white,
+              child: Text('Page Pertama'),
+            ),
+            new MaterialButton(
+              onPressed: () {
+                buttonPressed(context, PageKedua());
+              },
+              color: Colors.lightBlue[200],
+              textColor: Colors.white,
+              child: Text('Page Kedua'),
+            ),
+            new MaterialButton(
+              onPressed: () {
+                buttonPressed(context, PageKetiga());
+              },
+              color: Colors.lightBlue[200],
+              textColor: Colors.white,
+              child: Text('Page Ketiga'),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class PagePertama extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: new Center(
+        child: Text('Ini Page Pertama'),
+      ),
+    );
+  }
+}
+
+class PageKedua extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: new Center(
+        child: Text('Ini Page Kedua'),
+      ),
+    );
+  }
+}
+
+class PageKetiga extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: new Center(
+        child: Text('Ini Page Ketiga'),
       ),
     );
   }
