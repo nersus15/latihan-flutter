@@ -26,83 +26,28 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
+      home: WidgetContainer(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class HomePage extends StatelessWidget {
-  void buttonPressed(BuildContext context, page) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => page));
-  }
-
+class WidgetContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: new Center(
-        child: Column(
-          children: <Widget>[
-            new MaterialButton(
-              onPressed: () {
-                buttonPressed(context, PagePertama());
-              },
-              color: Colors.lightBlue[200],
-              textColor: Colors.white,
-              child: Text('Page Pertama'),
-            ),
-            new MaterialButton(
-              onPressed: () {
-                buttonPressed(context, PageKedua());
-              },
-              color: Colors.lightBlue[200],
-              textColor: Colors.white,
-              child: Text('Page Kedua'),
-            ),
-            new MaterialButton(
-              onPressed: () {
-                buttonPressed(context, PageKetiga());
-              },
-              color: Colors.lightBlue[200],
-              textColor: Colors.white,
-              child: Text('Page Ketiga'),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class PagePertama extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: new Center(
-        child: Text('Ini Page Pertama'),
-      ),
-    );
-  }
-}
-
-class PageKedua extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: new Center(
-        child: Text('Ini Page Kedua'),
-      ),
-    );
-  }
-}
-
-class PageKetiga extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: new Center(
-        child: Text('Ini Page Ketiga'),
-      ),
+      body: new Container(
+          child: Text('Container'),
+          width: 300.0,
+          height: 500.0,
+          padding: const EdgeInsets.all(20.0),
+          alignment: Alignment.center,
+          foregroundDecoration: new BoxDecoration(
+              color: Colors.transparent,
+              border: Border.all(
+                  color: Colors.lightBlue,
+                  width: 3.0,
+                  style: BorderStyle.solid))),
     );
   }
 }
